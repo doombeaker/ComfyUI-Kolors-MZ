@@ -14,9 +14,9 @@ import comfy.model_management as mm
 
 def chatglm3_text_encode(chatglm3_model, prompt):
     device = mm.get_torch_device()
-    offload_device = mm.unet_offload_device()
-    mm.unload_all_models()
-    mm.soft_empty_cache()
+    # offload_device = mm.unet_offload_device()
+    # mm.unload_all_models()
+    # mm.soft_empty_cache()
     # Function to randomly select an option from the brackets
 
     def choose_random_option(match):
@@ -56,9 +56,9 @@ def chatglm3_text_encode(chatglm3_model, prompt):
     text_proj = text_proj.repeat(1, 1).view(
         bs_embed, -1
     )
-    text_encoder.to(offload_device)
-    mm.soft_empty_cache()
-    gc.collect()
+    # text_encoder.to(offload_device)
+    # mm.soft_empty_cache()
+    # gc.collect()
     return prompt_embeds, text_proj
 
 
